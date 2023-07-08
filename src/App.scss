@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.ant-layout-sider-trigger {
+  background: #94755a !important;
+}
+
+.ant-btn, .ant-popconfirm-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-breadcrumb-link a,
+.ant-menu-title-content a {
+  text-decoration: none;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ant-upload-list-item-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ant-table-cell {
+  word-break: break-all;
+}

@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "Donalia";
+  src: url("../fonts/Donalia/Donalia.otf") format("opentype"),
+    url("../fonts/Donalia/Donalia.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/Jost/Jost-VariableFont_wght.ttf") format("truetype"),
+    url("../fonts/Jost/Jost-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.login {
+  background-color: #e5e4e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .card {
+    width: 60vw;
+    height: 80vh;
+    border-radius: 8px;
+
+    .card-grid {
+      width: 50%;
+      height: 80vh;
+    }
+
+    .card-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px;
+      text-align: start;
+      border-radius: 8px 0 0 8px;
+      background: linear-gradient(rgba(13, 12, 8, 0.5), rgba(21, 19, 10, 0.5)),
+        url("../images/login-cover-card.jpg") center;
+      background-size: cover;
+      color: #ffffff;
+
+      h1.title {
+        margin: 5vb 2vb;
+        font-size: 7vb;
+        font-weight: bolder;
+        color: inherit;
+      }
+
+      p {
+        font-family: "Jost", sans-serif;
+        font-size: 2.25vb;
+        margin: 1vb 2vb;
+        text-align: justify;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        margin: 0 2vb;
+      }
+    }
+
+    .card-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 0 8px 8px 0;
+      text-align: start;
+      padding: 2vb 5vb;
+
+      h1.title {
+        font-size: 6vb;
+        font-weight: bold;
+        color: #3e2c20;
+        padding-bottom: 2.25vb;
+      }
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2vb;
+
+        input {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.register {
+  background-color: #e5e4e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .card {
+    width: 60vw;
+    height: 80vh;
+    border-radius: 8px;
+
+    .card-grid {
+      width: 50%;
+      height: 80vh;
+    }
+
+    .card-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 30px;
+      text-align: start;
+      border-radius: 0 8px 8px 0;
+      background: linear-gradient(rgba(13, 12, 8, 0.5), rgba(21, 19, 10, 0.5)),
+        url("../images/register-cover-card.jpg") center;
+      background-size: cover;
+      color: #ffffff;
+
+      h1.title {
+        margin: 5vb 2vb;
+        font-size: 7vb;
+        font-weight: bolder;
+        color: inherit;
+      }
+
+      p {
+        font-family: "Jost", sans-serif;
+        font-size: 2.25vb;
+        margin: 1vb 2vb;
+        text-align: justify;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        margin: 0 2vb;
+      }
+    }
+
+    .card-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 8px 0 0 8px;
+      text-align: start;
+      padding: 2vb 5vb;
+
+      h1.title {
+        font-size: 6vb;
+        font-weight: bold;
+        color: #3e2c20;
+        padding-bottom: 2.25vb;
+      }
+
+      .register-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1vb;
+
+        input {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

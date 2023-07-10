@@ -119,14 +119,13 @@ export const EventInfo = () => {
             params: {
                 "access_token": currentUser.data.token,
             },
-        }).then((res) => {
+        }).then((eventRes) => {
+            const eventData = eventRes.data.data;
+            if (userRole === 3 & eventData.managerId !== userId) {
+                setIsViewMode(true);
+            }
             Promise
                 .all([
-                    axiosInstance.get(`/v1/auth/events/${eventId}`, {
-                        params: {
-                            "access_token": currentUser.data.token,
-                        },
-                    }),
                     axiosInstance.get("/v1/auth/users", {
                         params: {
                             "access_token": currentUser.data.token,
@@ -199,13 +198,9 @@ export const EventInfo = () => {
                     }),
                 ])
                 .then(([
-                    eventRes, userRes, hallRes, mapRes, evtItemRes, menuRes, menuItemRes,
+                    userRes, hallRes, mapRes, evtItemRes, menuRes, menuItemRes,
                     dishRes, albumRes, evtExpenseRes, weddPageRes, rsvpRes
                 ]) => {
-                    const eventData = eventRes.data.data;
-                    if (userRole === 3 & eventData.managerId !== userId) {
-                        setIsViewMode(true);
-                    }
                     eventData['eventDate'] = dayjs(eventData['eventDate'], 'YYYY-MM-DD');
 
                     let userData = userRes.data.rows;
@@ -288,9 +283,9 @@ export const EventInfo = () => {
                     eventData.numActGuests = sumGuests;
 
                     setEvent(eventData);
-                    console.log(eventData);
-                    generalForm.setFieldsValue({ formName: "general", ...eventData });
-                    console.log(generalForm.getFieldsValue());
+                    window.setTimeout(() => {
+                        generalForm.setFieldsValue({ formName: "general", ...eventData });
+                    }, 2000);
                     setHostInfo(hostData);
                     setManagerInfo(managerData);
                     setUserInfo(userData);

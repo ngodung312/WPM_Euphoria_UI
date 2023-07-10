@@ -19,7 +19,7 @@ export const AddMenu = ({ menus, setMenus }) => {
         setSubmitLoading(true);
         values["access_token"] = currentUser.data.token;
         values["menuPrice"] = 0;
-        console.log(values);
+        // console.log(values);
         axiosInstance
             .post(`/v1/auth/menus`, values)
             .then((res) => {

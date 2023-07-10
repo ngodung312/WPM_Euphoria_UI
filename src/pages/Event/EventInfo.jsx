@@ -283,7 +283,9 @@ export const EventInfo = () => {
                     eventData.numActGuests = sumGuests;
 
                     setEvent(eventData);
+                    console.log(eventData);
                     generalForm.setFieldsValue({ formName: "general", ...eventData });
+                    console.log(generalForm.getFieldsValue());
                     setHostInfo(hostData);
                     setManagerInfo(managerData);
                     setUserInfo(userData);
@@ -386,15 +388,15 @@ export const EventInfo = () => {
         } else {
             formNameList[currForm] = isViewMode ? false : true;
         }
-        console.log(currForm);
-        console.log(formNameList);
+        // console.log(currForm);
+        // console.log(formNameList);
 
         let isRequested = {};
         let updatedEvt = {};
         let newWeddItems = [];
 
         if (formNameList['general']) {
-            console.log(generalForm.getFieldsValue());
+            // console.log(generalForm.getFieldsValue());
             updatedEvt = {
                 ...event,
                 ...generalForm.getFieldsValue(),
@@ -403,7 +405,7 @@ export const EventInfo = () => {
         }
 
         if (formNameList['hall']) {
-            console.log(hallForm.getFieldsValue());
+            // console.log(hallForm.getFieldsValue());
             updatedEvt = {
                 ...event,
                 mapId: hallForm.getFieldValue('mapId')
@@ -412,8 +414,8 @@ export const EventInfo = () => {
         }
 
         if (formNameList['program']) {
-            console.log(evtItems);
-            console.log(weddItems);
+            // console.log(evtItems);
+            // console.log(weddItems);
 
             let eventStart = null;
             let eventEnd = null;
@@ -460,7 +462,7 @@ export const EventInfo = () => {
         }
 
         if (formNameList['menu']) {
-            console.log(selectedMenu);
+            // console.log(selectedMenu);
             updatedEvt = {
                 ...event,
                 menuId: selectedMenu.id
@@ -469,8 +471,8 @@ export const EventInfo = () => {
         }
 
         if (formNameList['album']) {
-            console.log(albumForm.getFieldsValue());
-            console.log(images);
+            // console.log(albumForm.getFieldsValue());
+            // console.log(images);
 
             isRequested['put_albums'] = true;
             isRequested['put_images'] = delImageIds.length > 0 ? true : false;
@@ -478,13 +480,13 @@ export const EventInfo = () => {
         }
 
         if (formNameList['expense']) {
-            console.log(evtExpenses);
+            // console.log(evtExpenses);
 
             isRequested['put_evt_expenses'] = delEvtExpIds.length > 0 ? true : false;
             isRequested['post_evt_expenses'] = evtExpenses.length > 0 ? true : false;
         }
 
-        console.log("Updated Form:", isRequested);
+        // console.log("Updated Form:", isRequested);
 
         Promise
             .all([

@@ -50,7 +50,7 @@ export const AlbumList = () => {
     useEffect(() => {
         const fetchAllAlbums = () => {
             axiosInstance
-                .get("/v1/auth/albums", {
+                .get("/albums", {
                     params: {
                         "access_token": currentUser.data.token,
                     },

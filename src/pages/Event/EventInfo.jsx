@@ -169,9 +169,8 @@ export const EventInfo = () => {
                         },
                     }),
 
-                    axiosInstance.get("/v1/auth/albums", {
+                    axiosInstance.get("/albums", {
                         params: {
-                            "access_token": currentUser.data.token,
                             "eventId": eventId,
                         },
                     }),

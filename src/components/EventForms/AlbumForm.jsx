@@ -158,7 +158,7 @@ export const AlbumForm = ({
             message.success(`${fileName} deleted successfully`);
         } catch (error) {
             // console.error('Error uploading file:', error);
-            message.error(`Error deleting ${fileName}`);
+            // message.error(`Error deleting ${fileName}`);
         }
     };
 

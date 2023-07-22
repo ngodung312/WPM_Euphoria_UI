@@ -12,7 +12,7 @@ export const ImageModal = ({
     editingImg, setEditingImg, imageForm, handleImageForm, albumOptions, images, setImages,
     submitLoading, isOpen, setIsOpen, currentUser, messageApi
 }) => {
-    const albumUrl = `${currentUser.data.bucketUrl}/albums`;
+    let albumUrl = currentUser ? `${currentUser.data.bucketUrl}/albums` : null;
 
     const [albumImgs, setAlbumImgs] = useState([]);
     const searchInput = useRef(null);
@@ -22,16 +22,16 @@ export const ImageModal = ({
         if (albumOptions) {
             axiosInstance.get("/images", {
                 params: {
-                    "access_token": currentUser.data.token,
                     "albumId": albumOptions.map(item => item.key),
                 },
             }).then((res) => {
                 let imageData = res.data.rows;
+                let currAlbum = albumUrl ? albumUrl : `${res.data.bucketUrl}/albums`;
                 imageData = imageData.map((img) => {
                     return {
                         ...img,
                         key: img.id,
-                        imageUrl: `${albumUrl}/${img.imageUrl}`,
+                        imageUrl: `${currAlbum}/${img.imageUrl}`,
                     };
                 });
                 setImages(imageData);

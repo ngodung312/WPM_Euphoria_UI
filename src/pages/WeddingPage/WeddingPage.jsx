@@ -128,21 +128,18 @@ export const WeddingPage = ({ isEditing = false }) => {
             .all([
                 axiosInstance.get("/wedding-pages", {
                     params: {
-                        "access_token": currentUser.data.token,
                         "eventId": eventId,
                     },
                 }),
 
-                axiosInstance.get("/v1/auth/albums", {
+                axiosInstance.get("/albums", {
                     params: {
-                        "access_token": currentUser.data.token,
                         "eventId": eventId,
                     },
                 }),
 
                 axiosInstance.get("/restaurant-infos", {
                     params: {
-                        "access_token": currentUser.data.token,
                         "eventId": eventId,
                     },
                 }),
@@ -171,6 +168,12 @@ export const WeddingPage = ({ isEditing = false }) => {
                     }
                 }
 
+                setWeddItems(weddPageData);
+                setWeddInfo({
+                    ...initWeddInfo,
+                    ...newWeddInfo
+                });
+
                 const albumData = albumRes.data.rows;
                 let albumOptData = [];
                 for (let i = 0; i < albumData.length; i++) {
@@ -180,26 +183,23 @@ export const WeddingPage = ({ isEditing = false }) => {
                         label: albumData[i].albumTitle,
                     })
                 }
-
-                const restaurantData = restaurantRes.data.rows;
-                let restaurantInfo = {};
-                for (let i = 0; i < restaurantData.length; i++) {
-                    const currItem = restaurantData[i];
-                    restaurantInfo[currItem.infoLabel] = currItem.infoValue;
-                }
-                setRestaurant(restaurantInfo);
-
                 setAlbumOptions(albumOptData);
-                setWeddItems(weddPageData);
-                setWeddInfo({
-                    ...initWeddInfo,
-                    ...newWeddInfo
-                });
+
+                if (restaurantRes) {
+                    const restaurantData = restaurantRes.data.rows;
+                    let restaurantInfo = {};
+                    for (let i = 0; i < restaurantData.length; i++) {
+                        const currItem = restaurantData[i];
+                        restaurantInfo[currItem.infoLabel] = currItem.infoValue;
+                    }
+                    setRestaurant(restaurantInfo);
+
+                }
             })
             .catch(err => {
-                messageApi.error(err.response.data.message);
+                messageApi.error(err.response ? err.response.data.message : 'error');
             });
-    }, [currentUser, eventId, messageApi]);
+    }, [currentUser, eventId, messageApi, isEditing]);
 
     const onClick = (e) => {
         setCurrNav(e.key);

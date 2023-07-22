@@ -74,7 +74,7 @@ export const WeddPageForm = ({
                                         >
                                             <QRCode
                                                 errorLevel="H"
-                                                value={`/wedding/${eventId}`}
+                                                value={`${window.location.host}/wedding/${eventId}`}
                                                 // icon={shortIcon}
                                                 bordered={false}
                                                 style={{
